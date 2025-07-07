@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const orgRoutes = require("./routes/org.routes");
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+app.use("/api/organizations", orgRoutes);
+
 
 const startServer = async () => {
   try {
