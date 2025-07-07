@@ -49,10 +49,10 @@ const registerOrganization = async (req, res) => {
       req
     });
 
-    res.status(201).json({ message: "Organization and admin created successfully." , admin : adminUser });
+    res.status(201).json({ message: "Organization and admin created successfully." , adminInfo : {id : adminUser._id, name : adminUser.name, email : adminUser.email} });
   } catch (err) {
     console.error("Error in org registration:", err.message);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error : err.message });
   }
 };
 
